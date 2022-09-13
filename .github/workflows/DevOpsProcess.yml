@@ -17,7 +17,7 @@ jobs:
 
     #Defining the container's image
     container:
-      image: salesforce/salesforcedx
+      image: salesforce/salesforcedx:latest-rc-full
     
     #job steps
     steps:
