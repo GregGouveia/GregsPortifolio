@@ -1,0 +1,49 @@
+<template>
+  <div class="slds-var-m-around_medium">
+    <lightning-card title="for:each loop">
+      <template for:each={carList} for:item="car">
+        <ul key={car} class="slds-has-dividers_around-space">
+          <li class="slds-item">{car}</li>
+        </ul>
+      </template>
+    </lightning-card>
+  </div>
+
+  <div class="slds-var-m-around_medium">
+    <lightning-card title="for:each loop with array of objects">
+      <template for:each={ceoList} for:item="listItem">
+        <ul key={listItem.id} class="slds-has-dividers_around-space">
+          <li class="slds-item">{listItem.name} {listItem.company}</li>
+        </ul>
+      </template>
+    </lightning-card>
+  </div>
+  <!-- To apply a special behavior to the first or the last item, prefer iterator -->
+  <!-- I can also access properties like value, index, first and last -->
+  <div class="slds-var-m-around_medium">
+    <lightning-card title="iterator loop">
+      <template iterator:ceo={ceoList}>
+        <div key={ceo.value.id}>
+          <ul class="slds-has-dividers_around-space">
+            <template if:true={ceo.first}>
+              <div class="slds-box slds-theme_shade">
+                <strong>List of top companies and their CEOs</strong>
+              </div>
+            </template>
+
+            <li class="slds-item">
+              <strong>{ceo.value.company} </strong>
+              {ceo.value.name}
+            </li>
+
+            <template if:true={ceo.last}>
+              <div class="slds-box slds-theme_shade">
+                <strong>End of the list.</strong>
+              </div>
+            </template>
+          </ul>
+        </div>
+      </template>
+    </lightning-card>
+  </div>
+</template>

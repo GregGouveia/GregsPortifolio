@@ -1,0 +1,41 @@
+<template>
+  <div class="slds-var-m-around_medium">
+    <lightning-card title="Conditional rendering">
+      <lightning-button
+        variant="brand"
+        label="Show Data"
+        title="Show Data"
+        onclick={handleClick}
+        class="slds-var-m-left_x-small"
+      ></lightning-button>
+
+      <template if:true={isVisible}>
+        <div class="slds-var-m-around_medium">
+          <div>
+            Property evaluated to true, so here I am! A Visible message! =)
+          </div>
+        </div>
+      </template>
+
+      <template if:false={isVisible}>
+        <div class="slds-var-m-around_medium">
+          <div>You can't see the data. Please click the button.</div>
+        </div>
+      </template>
+
+      <div class="slds-var-m-around_medium">
+        <lightning-input
+          type="text"
+          label="Type hello to see the data"
+          onkeyup={changeHandler}
+        ></lightning-input>
+      </div>
+
+      <template if:true={helloMethod}>
+        <div class="slds-var-m-around_medium">
+          <div>Hurray!! You have typed correctly!</div>
+        </div>
+      </template>
+    </lightning-card>
+  </div>
+</template>
