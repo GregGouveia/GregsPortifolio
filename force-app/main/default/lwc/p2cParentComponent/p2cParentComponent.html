@@ -1,0 +1,15 @@
+<template>
+  <c-p2c-alert-component
+    message="Hurray! I got the data from the child cmp!"
+    card-heading="Parent to child primitive data communication"
+    number="20"
+    is-valid="false"
+  ></c-p2c-alert-component>
+  <!-- String, Number and Boolean -->
+  <!-- By default, boolean will be true if not explicit declared -->
+
+  <div class="slds-var-m-bottom_medium"></div>
+  <c-p2c-carousel-component
+    carousel-details={carouselData}
+  ></c-p2c-carousel-component>
+</template>

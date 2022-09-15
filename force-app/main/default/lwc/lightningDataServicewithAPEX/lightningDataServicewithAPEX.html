@@ -1,0 +1,24 @@
+<template>
+  <div class="slds-var-m-around_medium">
+    <lightning-card title="Lightning Data Service With Apex">
+      <div class="slds-var-m-around_medium">
+        <p>Apex methods</p>
+        <p>Wite Apex Methods</p>
+        <p>Call Apex Methods Imperatively</p>
+        <p>
+          To expose an APEX method to LWC, the method must be static AND global
+          or public
+        </p>
+        <p>Should be annotated with @AuraEnabled</p>
+        <p>Code Snippet with example commented within the code</p>
+        <!-- <code>
+            public with sharing class AccountController {
+                @AuraEnabled(cacheable=true)
+                public static List<Account> getAccountList(){
+                    return [SELECT Id, Name, Type, Industry from Account]};
+            }
+        </code> -->
+      </div>
+    </lightning-card>
+  </div>
+</template>

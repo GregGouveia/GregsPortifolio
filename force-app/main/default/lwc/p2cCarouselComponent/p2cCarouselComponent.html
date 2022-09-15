@@ -1,0 +1,21 @@
+<template>
+  <div class="slds-var-m-around_medium">
+    <lightning-card title="Parent to Child non-primitive communication">
+      <div
+        class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small"
+      >
+        <lightning-carousel disable-auto-scroll>
+          <template for:each={carouselDetails} for:item="item">
+            <lightning-carousel-image
+              key={item.header}
+              src={item.src}
+              header={item.header}
+              description={item.description}
+            >
+            </lightning-carousel-image>
+          </template>
+        </lightning-carousel>
+      </div>
+    </lightning-card>
+  </div>
+</template>
