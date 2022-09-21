@@ -12,7 +12,8 @@ export default class LifeCycleParent extends LightningElement {
   // properties. Use getters and setters instead.
   connectedCallback() {
     console.log("CHILD connectedCallback called");
-    throw new Error("Loading of CHILD component failed.");
+    // to explicit throw an error, use the following
+    // throw new Error("Loading of CHILD component failed.");
   }
 
   renderedCallback() {

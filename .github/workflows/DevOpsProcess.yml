@@ -8,33 +8,31 @@ on:
 
 #Define the jobs to execute in separate environments
 jobs:
-
-  #CI job responsible for testing our application code. 
+  #CI job responsible for testing our application code.
   CI:
-
     #Which OS will it run?
     runs-on: ubuntu-latest
 
     #Defining the container's image
     container:
       image: salesforce/salesforcedx:latest-rc-full
-    
+
     #job steps
     steps:
       - uses: actions/checkout@v2
 
       - name: VALIDATE PACKAGE
-        run:  
+        run:
           echo force://${{ secrets.CLI_APP }}::${{ secrets.USER_TOKEN }}@${{ secrets.SF_URL }} >> config/auth.txt
           sfdx force:auth:sfdxurl:store -f config/auth.txt -s -a MyOrg
           sfdx force:org:create -f config/project-scratch-def.json -a CIOrg -s -v MyOrg
           sfdx force:source:push -u CIOrg
-          sfdx force:apex:test:run -l RunLocalTests -u CIOrg -c -r human -w 2 --verbose
+          sfdx force:apex:test:run -l RunLocalTests -u CIOrg -c -r human -w -1 --verbose
           sfdx force:org:delete -u CIOrg -p
 
-  #CD job responsible to execute the deploy into the DevOrg        
+  #CD job responsible to execute the deploy into the DevOrg
   CD:
-    needs: [ CI ]
+    needs: [CI]
     runs-on: ubuntu-latest
 
     container:
@@ -47,7 +45,4 @@ jobs:
         run:
           echo force://${{ secrets.CLI_APP }}::${{ secrets.USER_TOKEN }}@${{ secrets.SF_URL }} >> config/auth.txt
           sfdx force:auth:sfdxurl:store -f config/auth.txt -s -a MyOrg
-          sfdx force:source:deploy -p "force-app/main/default" -u MyOrg -w 2 --verbose
-    
-
-
+          sfdx force:source:deploy -p "force-app/main/default" -u MyOrg -w -1 --verbose
