@@ -1,4 +1,4 @@
-@RestResource(urlMapping='/getContacts')
+@RestResource(urlMapping='/getContactList')
 global with sharing class REST_Service_Account {
   @HttpGet
   global static List<Account> getContactsByAccountId() {
@@ -16,7 +16,7 @@ global with sharing class REST_Service_Account {
 
 // Testing it via workbench
 // rest explorer >> Get Method
-// /services/apexrest/getContacts?Id=0015300000FjftCAAR
+// /services/apexrest/getContactList?Id=0015300000FjftCAAR
 
 /* _________________________________________________________________________________ 
 Output from code above:
